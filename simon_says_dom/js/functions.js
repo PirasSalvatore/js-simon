@@ -36,11 +36,26 @@ function numberGenerate(min, max) {
  * @param {Number []} list 
  * @returns {String}
  */
-function generateUserNumbersListEl(list) {
+function generateRandomNumbersListEl(list) {
     let listEl = ""
 
     for (let i = 0; i < list.length; i++) {
         listEl += `<li>${list[i]}</li>`
     }
     return listEl
+}
+
+/**
+ * presa una lista di elementi input html resituisce una lista constenente
+ * i valori degli input passati nella lista
+ * @param {Array html input elemento} list lista di elementi tag input type Number
+ * @returns {Number []} ritorna lista di numeri
+ */
+function createListUserNumber(list) {
+    const numberList = []
+    for (let i = 0; i < list.length; i++) {
+        const thisEl = list[i].value
+        numberList.push(Number(thisEl))
+    }
+    return numberList
 }
