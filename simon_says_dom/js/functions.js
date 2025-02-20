@@ -59,3 +59,31 @@ function createListUserNumber(list) {
     }
     return numberList
 }
+
+/**
+ * prende 2 liste le contronta e crea una lista con gli elementi in comune tra le 2
+ * @param {Number[]} list1 prima lista  
+ * @param {Number[]} list2 seconda lista
+ * @returns {Number[]} list common elents
+ */
+function commonList(list1, list2) {
+    const list = []
+    for (let i = 0; i < list1.length; i++) {
+        const thisUserNumber = list1[i]
+        for (let y = 0; y < list2.length; y++) {
+            const thisrandomNumber = list2[y]
+            if (thisUserNumber === thisrandomNumber) {
+                list.push(thisUserNumber);
+            }
+        }
+    }
+    return list
+}
+
+function resultStringGenerate(list) {
+    let resultString = `hai indovinato ${list.length} numeri, e sono :`
+    for (let i = 0; i < list.length; i++) {
+        resultString += ` ${list[i]}`
+    }
+    return resultString
+}

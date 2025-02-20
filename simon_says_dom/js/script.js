@@ -15,6 +15,7 @@ const numberMin = 1;
 const numberMax = 50;
 const numbersListLength = 5;
 let countdownTimes = 3;
+let rememberNumber = [];
 
 // generate list of number
 const numbersList = numbersArrayGeneration(numberMin, numberMax, numbersListLength);
@@ -38,6 +39,7 @@ const countdown = setInterval(() => {
         clearInterval(countdown);
         numbersListEl.classList.toggle('d-none');
         answersFormEl.classList.toggle('d-none');
+        instructionsEl.innerText = "Inserisci i numeri che ti ricordi (i numeri sono compresi tra 1 e 50)"
     }
 
 }, 1000);
@@ -51,5 +53,13 @@ answersFormEl.addEventListener('submit', (e) => {
     userNumbersList = createListUserNumber(formControlEl)
     console.log(userNumbersList);
 
+    // controllo gli elementi in comune tra la lista utente e la lista casuale
+    rememberNumber = commonList(userNumbersList, numbersList)
+    console.log(rememberNumber);
 
-})
+    // stempo il risultato
+    answersFormEl.classList.toggle('d-none');
+    countdownEl.classList.toggle('d-none');
+
+    instructionsEl.innerText = resultStringGenerate(rememberNumber)
+}) 
